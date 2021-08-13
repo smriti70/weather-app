@@ -2,7 +2,9 @@ const request = require('postman-request');
 
 
 const forecast = (latitude,longitude,callback) =>{
-    const url = 'http://api.weatherstack.com/current?access_key='+process.env.WEATHER_STACK_ACCESS_KEY+'&query='+longitude+','+latitude+'&units=f';
+    const url = 'https://api.openweathermap.org/data/2.5/weather?lat='+ latitude + '&lon=' +
+    longitude + '&appid='+ process.env.OPEN_WEATHER_MAP_KEY +'&units=metric';
+    
 
     request({url,json:true},(error,{body})=>{
         console.log(body);
