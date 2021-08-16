@@ -4,6 +4,7 @@ const userInput = document.querySelector('form');
 const search = document.querySelector('input');
 const paragraphOne = document.querySelector('#paragraph-1');
 const paragraphTwo = document.querySelector('#paragraph-2');
+const image = document.querySelector('#image');
 
 userInput.addEventListener('submit',(e)=>{
     e.preventDefault();
@@ -18,6 +19,9 @@ userInput.addEventListener('submit',(e)=>{
         else{
             paragraphOne.textContent = "Location: "+data.location;
             paragraphTwo.textContent = "ForeCast: "+data.forecast;
+            image.src = data.imageURL;
+            image.style.height = 'auto';
+            image.style.width = 'auto';
         }
     })
 })

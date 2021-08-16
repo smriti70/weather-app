@@ -53,37 +53,20 @@ app.get('/weather',(req,res)=>{
         if(err){
             return res.send({error:err});
         }
-        forecast(latitude,longitude,(err,forecastData)=>{
+        forecast(latitude,longitude,(err,forecastData,imageURL)=>{
             if(err){
                 return res.send({error:err});
             }
             res.send({
                 forecast:forecastData,
                 location,
-                address: req.query.address
+                address: req.query.address,
+                imageURL:imageURL
             });
         });
     });
 
     
-});
-
-app.get('/products',(req,res)=>{
-    if(!req.query.search){
-        return res.send('Please enter some search term!!!');
-    }
-    res.send({
-        forecast:'I dont know',
-        name:'faridabad'
-    });
-});
-
-app.get('/help/*',(req,res)=>{
-    res.render('404',{
-        title: '404 error',
-        message: 'This help page does not exist!',
-        name:'Smriti Singh'
-    });
 });
 
 app.get('*',(req,res)=>{
